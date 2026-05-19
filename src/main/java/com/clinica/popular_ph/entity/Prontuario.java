@@ -21,14 +21,13 @@ public class Prontuario {
     @Column(nullable = true)
     private String observacoes;
 
-    /*RELACIONAMENTO 1-1 com paciente | paciente_id: FK na tabela prontuarios*/
+    /*RELACIONAMENTO 1-1 COM PACIENTE | paciente_id: FK na tabela prontuarios*/
     @OneToOne
     @JoinColumn(name = "paciente_id", nullable = false, unique = true)
     private Paciente paciente;
 
     /*CONSTRUTORES*/
     public Prontuario() {}
-
     public Prontuario(Long id, String tipoSanguineo, String alergias, String observacoes, Paciente paciente) {
         this.id = id;
         this.tipoSanguineo = tipoSanguineo;
