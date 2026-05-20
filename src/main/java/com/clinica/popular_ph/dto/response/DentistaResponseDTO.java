@@ -2,7 +2,7 @@ package com.clinica.popular_ph.dto.response;
 
 import java.util.List;
 
-public class DentistaResponse {
+public class DentistaResponseDTO {
 
     /*CAMPOS QUE APARECERÃO PARA O CLIENTE*/
     private Long id;

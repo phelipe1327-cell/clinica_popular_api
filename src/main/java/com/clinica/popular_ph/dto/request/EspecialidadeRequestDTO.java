@@ -2,7 +2,7 @@ package com.clinica.popular_ph.dto.request;
 
 import jakarta.validation.constraints.*;
 
-public class EspecialidadeRequest {
+public class EspecialidadeRequestDTO {
 
     /*VALIDANDO OS CAMPOS PARA O ENVIO CORRETO*/
     @NotBlank(message = "Nome é obrigatório")

@@ -3,7 +3,7 @@ package com.clinica.popular_ph.dto.request;
 import jakarta.validation.constraints.*;
 import java.util.List;
 
-public class DentistaRequest {
+public class DentistaRequestDTO {
 
     /*VALIDANDO OS CAMPOS PARA O ENVIO CORRETO*/
     @NotBlank(message = "Nome é obrigatório")

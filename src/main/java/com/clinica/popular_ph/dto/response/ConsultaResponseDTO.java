@@ -3,7 +3,7 @@ package com.clinica.popular_ph.dto.response;
 import com.clinica.popular_ph.entity.StatusConsulta;
 import java.time.LocalDateTime;
 
-public class ConsultaResponse {
+public class ConsultaResponseDTO {
 
     /*CAMPOS QUE APARECERÃO PARA O CLIENTE*/
     private Long id;

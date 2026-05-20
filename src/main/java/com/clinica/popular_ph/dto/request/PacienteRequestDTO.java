@@ -4,7 +4,7 @@ import jakarta.validation.constraints.*;
 
 import java.time.LocalDate;
 
-public class PacienteRequest {
+public class PacienteRequestDTO {
 
     /*VALIDANDO OS CAMPOS PARA O ENIVIO CORRETO */
     @NotBlank(message = "Nome é obrigatório")

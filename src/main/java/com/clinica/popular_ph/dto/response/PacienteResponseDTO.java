@@ -1,6 +1,6 @@
 package com.clinica.popular_ph.dto.response;
 
-public class PacienteResponse {
+public class PacienteResponseDTO {
 
     /*CAMPOS QUE APARECERÃO PARA OS CLIENTE*/
     private Long id;

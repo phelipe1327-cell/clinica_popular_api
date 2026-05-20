@@ -1,21 +1,18 @@
-package com.clinica.popular_ph.dto.request;
+package com.clinica.popular_ph.dto.response;
 
-import jakarta.validation.constraints.*;
+public class ProntuarioResponseDTO {
 
-public class ProntuarioRequest {
-
-    /*VALIDANDO OS CAMPOS PARA O ENVIO CORRETO*/
-    @NotBlank(message = "Tipo sanguíneo é obrigatório")
+    /*CAMPOS QUE APARECERÃO PARA O CLIENTE*/
+    private Long id;
     private String tipoSanguineo;
-
     private String alergias;
-
     private String observacoes;
-
-    @NotNull(message = "Paciente é obrigatório")
     private Long pacienteId;
+    private String pacienteNome;
 
     /*GETTERS E SETTERS*/
+    public Long getId() {return id;}
+    public void setId(Long id) {this.id = id;}
     public String getTipoSanguineo() {return tipoSanguineo;}
     public void setTipoSanguineo(String tipoSanguineo) {this.tipoSanguineo = tipoSanguineo;}
     public String getAlergias() {return alergias;}
@@ -24,4 +21,6 @@ public class ProntuarioRequest {
     public void setObservacoes(String observacoes) {this.observacoes = observacoes;}
     public Long getPacienteId() {return pacienteId;}
     public void setPacienteId(Long pacienteId) {this.pacienteId = pacienteId;}
+    public String getPacienteNome() {return pacienteNome;}
+    public void setPacienteNome(String pacienteNome) {this.pacienteNome = pacienteNome;}
 }
