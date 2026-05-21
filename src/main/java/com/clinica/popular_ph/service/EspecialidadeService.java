@@ -3,6 +3,7 @@ package com.clinica.popular_ph.service;
 import com.clinica.popular_ph.dto.request.EspecialidadeRequestDTO;
 import com.clinica.popular_ph.dto.response.EspecialidadeResponseDTO;
 import com.clinica.popular_ph.entity.Especialidade;
+import com.clinica.popular_ph.exception.ResourceNotFoundException;
 import com.clinica.popular_ph.repository.EspecialidadeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -30,7 +31,7 @@ public class EspecialidadeService {
 
     /*GET - BUSCAR ESPECIALIDADE POR ID*/
     public EspecialidadeResponseDTO buscarPorId(Long id) {
-        Especialidade especialidade = especialidadeRepository.findById(id).orElseThrow(() -> new RuntimeException("Especialidade não encontrada"));
+        Especialidade especialidade = especialidadeRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Especialidade não Encontrada"));
         return toResponse(especialidade);
     }
 
@@ -44,7 +45,7 @@ public class EspecialidadeService {
 
     /*PUT - ATUALIZAR ESPECIALIDADE*/
     public EspecialidadeResponseDTO atualizar(Long id, EspecialidadeRequestDTO request) {
-        Especialidade especialidade = especialidadeRepository.findById(id).orElseThrow(() -> new RuntimeException("Especialidade não encontrada"));
+        Especialidade especialidade = especialidadeRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Especialidade não Encontrada"));
         especialidade.setNome(request.getNome());
         especialidade.setDescricao(request.getDescricao());
         return toResponse(especialidadeRepository.save(especialidade));
@@ -52,7 +53,7 @@ public class EspecialidadeService {
 
     /*DELETE - DELETAR ESPECIALIDADE*/
     public void deletar(Long id) {
-        especialidadeRepository.findById(id).orElseThrow(() -> new RuntimeException("Especialidade não encontrada"));
+        especialidadeRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Especialidade não Encontrada"));
         especialidadeRepository.deleteById(id);
     }
 

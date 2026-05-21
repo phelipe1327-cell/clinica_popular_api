@@ -4,6 +4,7 @@ import com.clinica.popular_ph.dto.request.ProntuarioRequestDTO;
 import com.clinica.popular_ph.dto.response.ProntuarioResponseDTO;
 import com.clinica.popular_ph.entity.Paciente;
 import com.clinica.popular_ph.entity.Prontuario;
+import com.clinica.popular_ph.exception.ResourceNotFoundException;
 import com.clinica.popular_ph.repository.PacienteRepository;
 import com.clinica.popular_ph.repository.ProntuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,13 +36,13 @@ public class ProntuarioService {
 
     /*GET - BUSCAR PRONTUARIO POR ID*/
     public ProntuarioResponseDTO buscarPorId(Long id) {
-        Prontuario prontuario = prontuarioRepository.findById(id).orElseThrow(() -> new RuntimeException("Prontuario não encontrado"));
+        Prontuario prontuario = prontuarioRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Prontuario não encontrado"));
         return toResponse(prontuario);
     }
 
     /*POST - CRIAR NOVO PRONTUARIO*/
     public ProntuarioResponseDTO criar(ProntuarioRequestDTO request) {
-        Paciente paciente = pacienteRepository.findById(request.getPacienteId()).orElseThrow(() -> new RuntimeException("Paciente não encontrado"));
+        Paciente paciente = pacienteRepository.findById(request.getPacienteId()).orElseThrow(() -> new ResourceNotFoundException("Prontuario não encontrado"));
         Prontuario prontuario = new Prontuario();
         prontuario.setTipoSanguineo(request.getTipoSanguineo());
         prontuario.setAlergias(request.getAlergias());
@@ -52,8 +53,8 @@ public class ProntuarioService {
 
     /*PUT - ATUALIZAR PRONTUARIO*/
     public ProntuarioResponseDTO atualizar(Long id, ProntuarioRequestDTO request) {
-        Prontuario prontuario = prontuarioRepository.findById(id).orElseThrow(() -> new RuntimeException("Prontuario não encontrado"));
-        Paciente paciente = pacienteRepository.findById(request.getPacienteId()).orElseThrow(() -> new RuntimeException("Paciente não encontrado"));
+        Prontuario prontuario = prontuarioRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Prontuario não encontrado"));
+        Paciente paciente = pacienteRepository.findById(request.getPacienteId()).orElseThrow(() -> new ResourceNotFoundException("Prontuario não encontrado"));
         prontuario.setTipoSanguineo(request.getTipoSanguineo());
         prontuario.setAlergias(request.getAlergias());
         prontuario.setObservacoes(request.getObservacoes());
@@ -63,7 +64,7 @@ public class ProntuarioService {
 
     /*DELETE - DELETAR PRONTUARIO*/
     public void deletar(Long id) {
-        prontuarioRepository.findById(id).orElseThrow(() -> new RuntimeException("Prontuario não encontrado"));
+        prontuarioRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Prontuario não encontrado"));
         prontuarioRepository.deleteById(id);
     }
 

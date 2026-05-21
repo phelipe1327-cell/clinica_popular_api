@@ -5,6 +5,7 @@ import com.clinica.popular_ph.dto.response.ConsultaResponseDTO;
 import com.clinica.popular_ph.entity.Consulta;
 import com.clinica.popular_ph.entity.Dentista;
 import com.clinica.popular_ph.entity.Paciente;
+import com.clinica.popular_ph.exception.ResourceNotFoundException;
 import com.clinica.popular_ph.repository.ConsultaRepository;
 import com.clinica.popular_ph.repository.DentistaRepository;
 import com.clinica.popular_ph.repository.PacienteRepository;
@@ -40,14 +41,14 @@ public class ConsultaService {
 
     /*GET - BUSCAR CONSULTA POR ID*/
     public ConsultaResponseDTO buscarPorId(Long id) {
-        Consulta consulta = consultaRepository.findById(id).orElseThrow(() -> new RuntimeException("Consulta não encontrada"));
+        Consulta consulta = consultaRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Consulta não Encontrada"));
         return toResponse(consulta);
     }
 
     /*POST - CRIAR NOVA CONSULTA*/
     public ConsultaResponseDTO criar(ConsultaRequestDTO request) {
-        Paciente paciente = pacienteRepository.findById(request.getPacienteId()).orElseThrow(() -> new RuntimeException("Paciente não encontrado"));
-        Dentista dentista = dentistaRepository.findById(request.getDentistaId()).orElseThrow(() -> new RuntimeException("Dentista não encontrado"));
+        Paciente paciente = pacienteRepository.findById(request.getPacienteId()).orElseThrow(() -> new ResourceNotFoundException("Consulta não Encontrada"));
+        Dentista dentista = dentistaRepository.findById(request.getDentistaId()).orElseThrow(() -> new ResourceNotFoundException("Consulta não Encontrada"));
         Consulta consulta = new Consulta();
         consulta.setDataHora(request.getDataHora());
         consulta.setStatus(request.getStatus());
@@ -59,9 +60,9 @@ public class ConsultaService {
 
     /*PUT - ATUALIZAR CONSULTA*/
     public ConsultaResponseDTO atualizar(Long id, ConsultaRequestDTO request) {
-        Consulta consulta = consultaRepository.findById(id).orElseThrow(() -> new RuntimeException("Consulta não encontrada"));
-        Paciente paciente = pacienteRepository.findById(request.getPacienteId()).orElseThrow(() -> new RuntimeException("Paciente não encontrado"));
-        Dentista dentista = dentistaRepository.findById(request.getDentistaId()).orElseThrow(() -> new RuntimeException("Dentista não encontrado"));
+        Consulta consulta = consultaRepository.findById(id).orElseThrow(() -> new RuntimeException("Consulta não Encontrada"));
+        Paciente paciente = pacienteRepository.findById(request.getPacienteId()).orElseThrow(() -> new ResourceNotFoundException("Paciente não encontrado"));
+        Dentista dentista = dentistaRepository.findById(request.getDentistaId()).orElseThrow(() -> new ResourceNotFoundException("Paciente não encontrado"));
         consulta.setDataHora(request.getDataHora());
         consulta.setStatus(request.getStatus());
         consulta.setObservacoes(request.getObservacoes());
@@ -72,7 +73,7 @@ public class ConsultaService {
 
     /*DELETE - DELETAR CONSULTA*/
     public void deletar(Long id) {
-        consultaRepository.findById(id).orElseThrow(() -> new RuntimeException("Consulta não encontrada"));
+        consultaRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Consulta não Encontrada"));
         consultaRepository.deleteById(id);
     }
 

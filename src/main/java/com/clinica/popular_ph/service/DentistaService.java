@@ -4,6 +4,7 @@ import com.clinica.popular_ph.dto.request.DentistaRequestDTO;
 import com.clinica.popular_ph.dto.response.DentistaResponseDTO;
 import com.clinica.popular_ph.entity.Dentista;
 import com.clinica.popular_ph.entity.Especialidade;
+import com.clinica.popular_ph.exception.ResourceNotFoundException;
 import com.clinica.popular_ph.repository.DentistaRepository;
 import com.clinica.popular_ph.repository.EspecialidadeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,7 +36,7 @@ public class DentistaService {
 
     /*GET - BUSCAR DENTISTA POR ID*/
     public DentistaResponseDTO buscarPorId(Long id) {
-        Dentista dentista = dentistaRepository.findById(id).orElseThrow(() -> new RuntimeException("Dentista não encontrado"));
+        Dentista dentista = dentistaRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Dentista não encontrado"));
         return toResponse(dentista);
     }
 
@@ -55,7 +56,7 @@ public class DentistaService {
 
     /*PUT - ATUALIZAR DENTISTA*/
     public DentistaResponseDTO atualizar(Long id, DentistaRequestDTO request) {
-        Dentista dentista = dentistaRepository.findById(id).orElseThrow(() -> new RuntimeException("Dentista não encontrado"));
+        Dentista dentista = dentistaRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Dentista não encontrado"));
         dentista.setNome(request.getNome());
         dentista.setCro(request.getCro());
         dentista.setTelefone(request.getTelefone());
@@ -69,7 +70,7 @@ public class DentistaService {
 
     /*DELETE - DELETAR DENTISTA*/
     public void deletar(Long id) {
-        dentistaRepository.findById(id).orElseThrow(() -> new RuntimeException("Dentista não encontrado"));
+        dentistaRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Dentista não encontrado"));
         dentistaRepository.deleteById(id);
     }
 

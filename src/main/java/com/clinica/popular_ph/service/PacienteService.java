@@ -3,6 +3,7 @@ package com.clinica.popular_ph.service;
 import com.clinica.popular_ph.dto.request.PacienteRequestDTO;
 import com.clinica.popular_ph.dto.response.PacienteResponseDTO;
 import com.clinica.popular_ph.entity.Paciente;
+import com.clinica.popular_ph.exception.ResourceNotFoundException;
 import com.clinica.popular_ph.repository.PacienteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -31,7 +32,7 @@ public class PacienteService {
 
     /*GET - BUSCAR PACIENTE POR ID*/
     public PacienteResponseDTO buscarPorId(Long id) {
-        Paciente paciente = pacienteRepository.findById(id).orElseThrow(() -> new RuntimeException("Paciente não encontrado"));
+        Paciente paciente = pacienteRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Paciente não encontrado"));
         return toResponse(paciente);
     }
     /*POST - CRIAR NOVO PACIENTE*/
@@ -46,7 +47,7 @@ public class PacienteService {
     }
     /*PUT - ATUALIZAR PACIENTE*/
     public PacienteResponseDTO atualizar(Long id, PacienteRequestDTO request) {
-        Paciente paciente = pacienteRepository.findById(id).orElseThrow(() -> new RuntimeException("Paciente não encontrado"));
+        Paciente paciente = pacienteRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Paciente não encontrado"));
         paciente.setNome(request.getNome());
         paciente.setCpf(request.getCpf());
         paciente.setTelefone(request.getTelefone());
@@ -56,7 +57,7 @@ public class PacienteService {
     }
     /*DELETE - DELETAR PACIENTE*/
     public void deletar(Long id) {
-        pacienteRepository.findById(id).orElseThrow(() -> new RuntimeException("Paciente não encontrado"));
+        pacienteRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Paciente não encontrado"));
         pacienteRepository.deleteById(id);
     }
     /*CONVERTER ENTIDADE PRA RESPONSE*/
