@@ -1,14 +1,29 @@
 package com.clinica.popular_ph.dto.response;
 
+import io.swagger.v3.oas.annotations.media.Schema;
+
+import java.time.LocalDate;
+
 public class PacienteResponseDTO {
 
     /*CAMPOS QUE APARECERÃO PARA OS CLIENTE*/
+    @Schema(description = "ID do paciente")
     private Long id;
+
+    @Schema(description = "Nome do paciente")
     private String nome;
+
+    @Schema(description = "CPF do paciente")
     private String cpf;
+
+    @Schema(description = "Telefone do paciente")
     private String telefone;
+
+    @Schema(description = "Email do paciente")
     private String email;
-    private java.time.LocalDate dataNascimento;
+
+    @Schema(description = "Data de nascimento do paciente")
+    private LocalDate dataNascimento;
 
     /*GETTERS E SETTERS*/
     public Long getId() {return id;}

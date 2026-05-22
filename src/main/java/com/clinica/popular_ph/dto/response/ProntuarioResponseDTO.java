@@ -1,13 +1,26 @@
 package com.clinica.popular_ph.dto.response;
 
+import io.swagger.v3.oas.annotations.media.Schema;
+
+@Schema(description = "Dados retornados do prontuario")
 public class ProntuarioResponseDTO {
 
-    /*CAMPOS QUE APARECERÃO PARA O CLIENTE*/
+    @Schema(description = "ID do prontuario")
     private Long id;
+
+    @Schema(description = "Tipo sanguíneo do paciente")
     private String tipoSanguineo;
+
+    @Schema(description = "Alergias do paciente")
     private String alergias;
+
+    @Schema(description = "Observações médicas")
     private String observacoes;
+
+    @Schema(description = "ID do paciente")
     private Long pacienteId;
+
+    @Schema(description = "Nome do paciente")
     private String pacienteNome;
 
     /*GETTERS E SETTERS*/

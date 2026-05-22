@@ -1,18 +1,35 @@
 package com.clinica.popular_ph.dto.response;
 
 import com.clinica.popular_ph.entity.StatusConsulta;
+import io.swagger.v3.oas.annotations.media.Schema;
+
 import java.time.LocalDateTime;
 
+@Schema(description = "Dados retornados da consulta")
 public class ConsultaResponseDTO {
 
-    /*CAMPOS QUE APARECERÃO PARA O CLIENTE*/
+    @Schema(description = "ID da consulta")
     private Long id;
+
+    @Schema(description = "Data e hora da consulta")
     private LocalDateTime dataHora;
+
+    @Schema(description = "Status da consulta")
     private StatusConsulta status;
+
+    @Schema(description = "Observações da consulta")
     private String observacoes;
+
+    @Schema(description = "ID do paciente")
     private Long pacienteId;
+
+    @Schema(description = "Nome do paciente")
     private String pacienteNome;
+
+    @Schema(description = "ID do dentista")
     private Long dentistaId;
+
+    @Schema(description = "Nome do dentista")
     private String dentistaNome;
 
     /*GETTERS E SETTERS*/

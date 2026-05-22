@@ -1,14 +1,17 @@
 package com.clinica.popular_ph.dto.request;
 
 import com.clinica.popular_ph.entity.StatusConsulta;
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.Future;
 import jakarta.validation.constraints.NotNull;
 
 import java.time.LocalDateTime;
 
+@Schema(description = "Dados para cadastro das consultas")
 public class ConsultaRequestDTO {
 
     /*VALIDANDO OS CAMPOS PARA O ENVIO CORRETO*/
+    @Schema(description = "")
     @NotNull(message = "Data e hora são obrigatórias")
     @Future(message = "Data da consulta deve ser no futuro")
     private LocalDateTime dataHora;

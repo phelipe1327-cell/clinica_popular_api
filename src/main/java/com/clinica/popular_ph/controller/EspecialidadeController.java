@@ -3,6 +3,7 @@ package com.clinica.popular_ph.controller;
 import com.clinica.popular_ph.dto.request.EspecialidadeRequestDTO;
 import com.clinica.popular_ph.dto.response.EspecialidadeResponseDTO;
 import com.clinica.popular_ph.service.EspecialidadeService;
+import io.swagger.v3.oas.annotations.Operation;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,6 +18,9 @@ public class EspecialidadeController {
     /*ACESSANDO O SERVICE*/
     @Autowired
     private EspecialidadeService especialidadeService;
+
+    /*CHECAR QUAIS ENPOINTS POSSO CHAMAR*/
+    @Operation(summary = "Listar todas as especialidades", description = "Retorna uma lista com todas as especialidades cadastradas")
 
     /*GET - LISTAR TODAS AS ESPECIALIDADES*/
     @GetMapping

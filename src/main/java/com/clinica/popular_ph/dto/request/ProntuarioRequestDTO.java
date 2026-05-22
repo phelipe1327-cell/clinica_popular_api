@@ -1,17 +1,23 @@
 package com.clinica.popular_ph.dto.request;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.*;
 
+@Schema(description = "Dados de cadastro do prontuario")
 public class ProntuarioRequestDTO {
 
     /*VALIDANDO OS CAMPOS PARA O ENVIO CORRETO*/
+    @Schema(description = "Tipo sanguíneo do paciente")
     @NotBlank(message = "Tipo sanguíneo é obrigatório")
     private String tipoSanguineo;
 
+    @Schema(description = "Alergias do paciente")
     private String alergias;
 
+    @Schema(description = "Observações médicas do paciente")
     private String observacoes;
 
+    @Schema(description = "ID do paciente dono do prontuario")
     @NotNull(message = "Paciente é obrigatório")
     private Long pacienteId;
 

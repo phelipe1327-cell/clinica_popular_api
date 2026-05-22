@@ -3,6 +3,7 @@ package com.clinica.popular_ph.controller;
 import com.clinica.popular_ph.dto.request.DentistaRequestDTO;
 import com.clinica.popular_ph.dto.response.DentistaResponseDTO;
 import com.clinica.popular_ph.service.DentistaService;
+import io.swagger.v3.oas.annotations.Operation;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,6 +18,9 @@ public class DentistaController {
     /*ACESSANDO O SERVICE*/
     @Autowired
     private DentistaService dentistaService;
+
+    /*CHECAR QUAIS ENPOINTS POSSO CHAMAR*/
+    @Operation(summary = "Listar todos os dentistas", description = "Retorna uma lista com todos os dentistas cadastrados")
 
     /*GET - LISTAR TODOS OS DENTISTAS*/
     @GetMapping

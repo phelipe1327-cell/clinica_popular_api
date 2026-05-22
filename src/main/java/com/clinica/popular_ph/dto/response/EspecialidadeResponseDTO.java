@@ -1,10 +1,17 @@
 package com.clinica.popular_ph.dto.response;
 
+import io.swagger.v3.oas.annotations.media.Schema;
+
+@Schema(description = "Dados retornados da especialidade")
 public class EspecialidadeResponseDTO {
 
-    /*CAMPOS QUE APARECERÃO PARA O CLIENTE*/
+    @Schema(description = "ID da especialidade")
     private Long id;
+
+    @Schema(description = "Nome da especialidade")
     private String nome;
+
+    @Schema(description = "Descrição da especialidade")
     private String descricao;
 
     /*GETTERS E SETTERS*/

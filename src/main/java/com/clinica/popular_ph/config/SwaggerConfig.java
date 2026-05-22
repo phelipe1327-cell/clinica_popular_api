@@ -10,10 +10,6 @@ public class SwaggerConfig {
 
     @Bean
     public OpenAPI customOpenAPI() {
-        return new OpenAPI()
-                .info(new Info()
-                        .title("Clínica Popular API")
-                        .description("API REST para gerenciamento de clínica odontológica popular")
-                        .version("1.0.0"));
+        return new OpenAPI().info(new Info().title("Clínica Popular API").description("API REST para gerenciamento de clínica odontológica popular").version("1.0.0"));
     }
 }

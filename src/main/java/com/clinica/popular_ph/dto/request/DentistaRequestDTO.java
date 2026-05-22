@@ -1,25 +1,32 @@
 package com.clinica.popular_ph.dto.request;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.*;
 import java.util.List;
 
+@Schema(description = "Dados de cadastro dos denstistas")
 public class DentistaRequestDTO {
 
     /*VALIDANDO OS CAMPOS PARA O ENVIO CORRETO*/
+    @Schema(description = "Nome completo do dentista")
     @NotBlank(message = "Nome é obrigatório")
     private String nome;
 
+    @Schema(description = "TIPO UM CPF DE DENTISTA")
     @NotBlank(message = "CRO é obrigatório")
     @Size(min = 6, max = 6, message = "CRO deve ter 6 dígitos")
     private String cro;
 
+    @Schema(description = "Telefone do dentista")
     @NotBlank(message = "Telefone é obrigatório")
     private String telefone;
 
+    @Schema(description = "Email do dentista")
     @NotBlank(message = "Email é obrigatório")
     @Email(message = "Email inválido")
     private String email;
 
+    @Schema(description = "Lista de IDs das especialidades do dentista")
     private List<Long> especialidadeIds;
 
     /*GETTERS E SETTERS*/

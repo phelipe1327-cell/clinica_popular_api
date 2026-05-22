@@ -3,6 +3,7 @@ package com.clinica.popular_ph.controller;
 import com.clinica.popular_ph.dto.request.ProntuarioRequestDTO;
 import com.clinica.popular_ph.dto.response.ProntuarioResponseDTO;
 import com.clinica.popular_ph.service.ProntuarioService;
+import io.swagger.v3.oas.annotations.Operation;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,6 +18,9 @@ public class ProntuarioController {
     /*ACESSANDO O SERVICE*/
     @Autowired
     private ProntuarioService prontuarioService;
+
+    /*CHECAR QUAIS ENPOINTS POSSO CHAMAR*/
+    @Operation(summary = "Listar todos os prontuários", description = "Retorna uma lista com todos os prontuários realizados")
 
     /*GET - LISTAR TODOS OS PRONTUARIOS*/
     @GetMapping

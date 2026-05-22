@@ -1,15 +1,28 @@
 package com.clinica.popular_ph.dto.response;
 
+import io.swagger.v3.oas.annotations.media.Schema;
+
 import java.util.List;
 
+@Schema(description = "Dados retornados do dentista")
 public class DentistaResponseDTO {
 
-    /*CAMPOS QUE APARECERÃO PARA O CLIENTE*/
+    @Schema(description = "ID do dentista")
     private Long id;
+
+    @Schema(description = "Nome do dentista")
     private String nome;
+
+    @Schema(description = "CRO do dentista")
     private String cro;
+
+    @Schema(description = "Telefone do dentista")
     private String telefone;
+
+    @Schema(description = "Email do dentista")
     private String email;
+
+    @Schema(description = "Lista de especialidades do dentista")
     private List<String> especialidades;
 
     /*GETTERS E SETTERS*/
